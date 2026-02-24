@@ -2,21 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repo') {
+        stage('Show Files') {
             steps {
-                git 'https://github.com/priyankah1116/project-jenkins.git'
+                sh 'ls -l'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t java-ci-cd .'
+                sh 'docker build -t hello-java .'
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Run Java App') {
             steps {
-                sh 'docker run --rm java-ci-cd'
+                sh 'docker run --rm hello-java'
             }
         }
     }
