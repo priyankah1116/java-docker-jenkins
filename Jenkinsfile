@@ -16,10 +16,7 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                sh '''
-                docker rm -f java-app || true
-                docker run --name java-app java-docker-app
-                '''
+                sh 'docker run --rm java-app'
             }
         }
     }
